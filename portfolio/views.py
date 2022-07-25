@@ -4,9 +4,7 @@ import git
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exem
 
-def home(request):
-    projects = Project.objects.all()
-    return render(request,'portfolio/home.html', {'projects':projects})
+
 @csrf_exempt
 def update(request):
     if request.method == "POST":
@@ -23,3 +21,6 @@ def update(request):
         return HttpResponse("Updated code on PythonAnywhere")
     else:
         return HttpResponse("Couldn't update the code on PythonAnywhere")
+def home(request):
+    projects = Project.objects.all()
+    return render(request,'portfolio/home.html', {'projects':projects})
